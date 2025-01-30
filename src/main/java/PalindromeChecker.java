@@ -3,58 +3,52 @@ import java.io.FileNotFoundException;  // Import this class to handle errors
 import java.util.Scanner; // Import the Scanner class to read text files
 
 public class PalindromeChecker {
-public void tester()
-{
-  //String lines[] = loadStrings("palindromes.txt");
-  String[] lines = new String[6]; 
-    try{
-        File myFile = new File("palindromes.txt");
-        Scanner myReader = new Scanner(myFile);
-        int counter = 0;
-        while (myReader.hasNextLine()) {
-            String data = myReader.nextLine();
-            lines[counter] = data;
-            counter++;
-        }
-        myReader.close();
+  public void tester()
+  {
+    //String lines[] = loadStrings("palindromes.txt");
+    String[] lines = new String[6];
+    try {
+      File myFile = new File("palindromes.txt");
+      Scanner myReader = new Scanner(myFile);
+      int counter = 0;
+      while (myReader.hasNextLine()) {
+        String data = myReader.nextLine();
+        lines[counter] = data;
+        counter++;
+      }
+      myReader.close();
     }
     catch (FileNotFoundException e) {
-        System.out.println("An error occurred.");
-        e.printStackTrace();
+      System.out.println("An error occurred.");
+      e.printStackTrace();
     }
-  System.out.println("there are " + lines.length + " lines");
-  for (int i=0; i < lines.length; i++) 
-  {
-    if(palindrome(lines[i])==true)
+    System.out.println("there are " + lines.length + " lines");
+    for (int i=0; i < lines.length; i++)
     {
-      System.out.println(lines[i] + " IS a palindrome.");
-    }
-    else
-    {
-      System.out.println(lines[i] + " is NOT a palindrome.");
-    }
-  }
-}
-public boolean palidrome(String word) {
-    String s = "";
-    for (int i = 0; i < word.length(); i++) {
-      if (Character.isLetter(word.charAt(i))) {
-        s = s + word.charAt(i);
+      if (palindrome(lines[i])==true)
+      {
+        System.out.println(lines[i] + " IS a palindrome.");
+      } else
+      {
+        System.out.println(lines[i] + " is NOT a palindrome.");
       }
     }
-
-    String rev = reverse(s);
-
-    return s.toLowerCase().equals(rev.toLowerCase());
   }
-
-
+  public boolean palindrome(String word)
+  {
+    if (word.equals(reverse(word)))
+      return true;
+    else
+      return false;
+  }
   public String reverse(String str)
   {
-    String result = "";
-    for (int i = str.length() - 1; i >= 0; i--) {
-      result = result + str.charAt(i);
+    String result = new String();
+    for (int i = str.length()-1; i>=0; i--) {
+      if ((Character.isLetter(str.charAt(i))==true)&(str.charAt(i)!=' ')) {
+        result=result+str.charAt(i);
+      }
     }
-    return result;
+    return result.toLowerCase();
   }
 }
