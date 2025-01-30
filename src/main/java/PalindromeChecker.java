@@ -46,10 +46,10 @@ public class PalindromeChecker {
   }
 
   public String reverse(String str) {
-    String result = "";
+    String sNew = "";
     for (int i = str.length() - 1; i >= 0; i--) {
       result += str.charAt(i);
     }
-    return result;
+    return sNew;
   }
 }
