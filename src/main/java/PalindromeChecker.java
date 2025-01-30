@@ -34,21 +34,22 @@ public class PalindromeChecker {
       }
     }
   }
-  public boolean palindrome(String word)
-  {
-    if (word.equals(reverse(word)))
-      return true;
-    else
-      return false;
-  }
-  public String reverse(String str)
-  {
-    String result = new String();
-    for (int i = str.length()-1; i>=0; i--) {
-      if ((Character.isLetter(str.charAt(i))==true)&(str.charAt(i)!=' ')) {
-        result=result+str.charAt(i);
+  public boolean palindrome(String word) {
+    String word1 = "";
+    for (int i = 0; i < word.length(); i++) {
+      if (Character.isLetter(word.charAt(i))) {
+        word1 += Character.toLowerCase(word.charAt(i));
       }
     }
-    return result.toLowerCase();
+
+    return word1.equals(reverse(word1));
+  }
+
+  public String reverse(String str) {
+    String result = "";
+    for (int i = str.length() - 1; i >= 0; i--) {
+      result += str.charAt(i);
+    }
+    return result;
   }
 }
